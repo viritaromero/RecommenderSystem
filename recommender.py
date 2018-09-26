@@ -1,10 +1,10 @@
 # Import Pandas
 import pandas as pd
 
-# Load Movies Metadata
+# Create a Python dataset from a CSV file
 metadata = pd.read_csv('movies_metadata.csv', low_memory=False)
 
-# Print the first three rows
+# Print the first five rows
 metadata.head(5)
 
 # Calculate C
@@ -26,7 +26,7 @@ def weighted_rating(x, m=m, C=C):
     # Calculation based on the IMDB formula
     return (v/(v+m) * R) + (m/(m+v) * C)
     
-# Define a new feature 'score' and calculate its value with `weighted_rating()`
+# Define a new feature 'score' and calculate its value with 'weighted_rating()'
 q_movies['score'] = q_movies.apply(weighted_rating, axis=1)
 
 #Sort movies based on score calculated above
